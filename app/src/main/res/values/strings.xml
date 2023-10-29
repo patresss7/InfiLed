@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InfiLed</string>
+    <string name="choose_device_title">Choose device</string>
 </resources>
