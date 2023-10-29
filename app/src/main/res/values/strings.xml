@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">InfiLed</string>
     <string name="choose_device_title">Choose device</string>
+    <string name="choose_effect_title">Choose effect</string>
 </resources>
