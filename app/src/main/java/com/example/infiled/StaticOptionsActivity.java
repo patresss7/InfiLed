@@ -7,18 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ChooseEffectActivity extends AppCompatActivity {
+public class StaticOptionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_effect);
+        setContentView(R.layout.activity_static_options);
 
-        Button buttonLaunchNewActivity = findViewById(R.id.staticButton);
+        Button buttonLaunchNewActivity = findViewById(R.id.buttonCustom);
         buttonLaunchNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChooseEffectActivity.this, StaticOptionsActivity.class);
+                Intent intent = new Intent(StaticOptionsActivity.this, CustomStaticActivity.class);
                 startActivity(intent);
             }
         });

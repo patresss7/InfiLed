@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ChooseEffectActivity">
+    tools:context=".StaticOptionsActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choose_effect_title"
+        android:text="@string/static_options_title"
         android:textSize="28sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
@@ -21,7 +21,7 @@
         />
 
     <Button
-        android:id="@+id/staticButton"
+        android:id="@+id/buttonCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -30,7 +30,7 @@
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textSize="28sp"
-        android:text="@string/static_effect_button"
+        android:text="@string/custom_static_button"
         android:textColor="@color/white"
         android:background="@drawable/rounded_button"/>
 </RelativeLayout>

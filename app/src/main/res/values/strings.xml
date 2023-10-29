@@ -3,4 +3,7 @@
     <string name="choose_device_title">Choose device</string>
     <string name="choose_effect_title">Choose effect</string>
     <string name="static_effect_button">STATIC</string>
+    <string name="static_options_title">Static options</string>
+    <string name="custom_static_button">CUSTOM</string>
+    <string name="custom_static_title">Set RGB values</string>
 </resources>
