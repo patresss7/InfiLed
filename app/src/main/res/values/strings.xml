@@ -2,4 +2,5 @@
     <string name="app_name">InfiLed</string>
     <string name="choose_device_title">Choose device</string>
     <string name="choose_effect_title">Choose effect</string>
+    <string name="static_effect_button">STATIC</string>
 </resources>
