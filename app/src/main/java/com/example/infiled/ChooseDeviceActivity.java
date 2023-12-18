@@ -57,6 +57,12 @@ public class ChooseDeviceActivity extends AppCompatActivity {
 
         Button reloadButton = findViewById(R.id.reloadButton);
         reloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onReloadButtonClick();
+            }
+        });
+
         checkAllPermissions();
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -72,6 +78,8 @@ public class ChooseDeviceActivity extends AppCompatActivity {
         availableInfiLedDevicesListStrings.clear();
         discoverDevices(bluetoothAdapter);
     }
+
+
     private void discoverDevices(BluetoothAdapter bluetoothAdapter) {
         if(checkCustomPermission(Manifest.permission.BLUETOOTH_SCAN)) {
             if (bluetoothAdapter.isDiscovering()) {
