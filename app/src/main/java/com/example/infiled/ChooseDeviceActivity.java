@@ -20,10 +20,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.Manifest;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChooseDeviceActivity extends AppCompatActivity {
 
     private BluetoothAdapter bluetoothAdapter;
+    private List<BluetoothDevice> availableInfiLedDevicesList = new ArrayList<>();
+    private List<String> availableInfiLedDevicesListStrings = new ArrayList<>();
 
     private final BroadcastReceiver discoveryReceiver = new BroadcastReceiver() {
         @Override
@@ -32,7 +40,11 @@ public class ChooseDeviceActivity extends AppCompatActivity {
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if(checkCustomPermission(Manifest.permission.BLUETOOTH_CONNECT))
-                    Log.d(TAG, "Found device: " + device.getName() + " - " + device.getAddress());
+                    if(device.getName().startsWith(getString(R.string.app_name))) {
+                        Log.d(TAG, "Found device: " + device.getName() + " - " + device.getAddress());
+                        availableInfiLedDevicesList.add(device);
+                        availableInfiLedDevicesListStrings.add(device.getName());
+                    }
                 // You can add the discovered device to a list or adapter for display.
             }
         }
@@ -43,6 +55,8 @@ public class ChooseDeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_device);
 
+        Button reloadButton = findViewById(R.id.reloadButton);
+        reloadButton.setOnClickListener(new View.OnClickListener() {
         checkAllPermissions();
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -52,6 +66,12 @@ public class ChooseDeviceActivity extends AppCompatActivity {
         discoverDevices(bluetoothAdapter);
     }
 
+    private void onReloadButtonClick(){
+        Log.d(TAG, "Reload bluetooth devices list requested!");
+        availableInfiLedDevicesList.clear();
+        availableInfiLedDevicesListStrings.clear();
+        discoverDevices(bluetoothAdapter);
+    }
     private void discoverDevices(BluetoothAdapter bluetoothAdapter) {
         if(checkCustomPermission(Manifest.permission.BLUETOOTH_SCAN)) {
             if (bluetoothAdapter.isDiscovering()) {
