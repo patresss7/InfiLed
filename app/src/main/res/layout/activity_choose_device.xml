@@ -57,7 +57,7 @@
         android:textStyle="bold"
         android:textColor="@color/teal_200"
         android:clickable="true"
-        android:onClick="onChooseDeviceClick"
+        android:onClick="onDevice1Click"
         />
 
     <TextView
@@ -73,7 +73,7 @@
         android:textStyle="bold"
         android:textColor="@color/teal_200"
         android:clickable="true"
-        android:onClick="onChooseDeviceClick"
+        android:onClick="onDevice2Click"
         />
 
     <TextView
@@ -89,7 +89,7 @@
         android:textStyle="bold"
         android:textColor="@color/teal_200"
         android:clickable="true"
-        android:onClick="onChooseDeviceClick"
+        android:onClick="onDevice3Click"
         />
 
 </RelativeLayout>
