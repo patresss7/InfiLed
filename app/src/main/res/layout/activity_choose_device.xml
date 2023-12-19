@@ -44,4 +44,52 @@
         android:radius="12dp"
         />
 
+    <TextView
+        android:id="@+id/textViewDevice1"
+        android:layout_below="@id/reloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200"
+        android:clickable="true"
+        android:onClick="onChooseDeviceClick"
+        />
+
+    <TextView
+        android:id="@+id/textViewDevice2"
+        android:layout_below="@id/textViewDevice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200"
+        android:clickable="true"
+        android:onClick="onChooseDeviceClick"
+        />
+
+    <TextView
+        android:id="@+id/textViewDevice3"
+        android:layout_below="@id/textViewDevice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200"
+        android:clickable="true"
+        android:onClick="onChooseDeviceClick"
+        />
+
 </RelativeLayout>

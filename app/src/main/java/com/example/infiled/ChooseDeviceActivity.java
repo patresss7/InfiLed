@@ -23,6 +23,7 @@ import android.Manifest;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,12 @@ public class ChooseDeviceActivity extends AppCompatActivity {
 
     private BluetoothAdapter bluetoothAdapter;
     private List<BluetoothDevice> availableInfiLedDevicesList = new ArrayList<>();
-    private List<String> availableInfiLedDevicesListStrings = new ArrayList<>();
+    String[] availableInfiLedDevicesStrings = new String[3];
+
+    private TextView textView1;
+    private TextView textView2;
+    private TextView textView3;
+
 
     private final BroadcastReceiver discoveryReceiver = new BroadcastReceiver() {
         @Override
@@ -39,11 +45,12 @@ public class ChooseDeviceActivity extends AppCompatActivity {
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if(checkCustomPermission(Manifest.permission.BLUETOOTH_CONNECT))
+                if(checkCustomPermission(Manifest.permission.BLUETOOTH_CONNECT) && device.getName() != null)
                     if(device.getName().startsWith(getString(R.string.app_name))) {
                         Log.d(TAG, "Found device: " + device.getName() + " - " + device.getAddress());
                         availableInfiLedDevicesList.add(device);
-                        availableInfiLedDevicesListStrings.add(device.getName());
+                        availableInfiLedDevicesStrings[0] = availableInfiLedDevicesList.get(0).getName();
+                        updateListOfDevices();
                     }
                 // You can add the discovered device to a list or adapter for display.
             }
@@ -63,6 +70,10 @@ public class ChooseDeviceActivity extends AppCompatActivity {
             }
         });
 
+        textView1 = findViewById(R.id.textViewDevice1);
+        textView2 = findViewById(R.id.textViewDevice2);
+        textView3 = findViewById(R.id.textViewDevice3);
+
         checkAllPermissions();
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -75,8 +86,25 @@ public class ChooseDeviceActivity extends AppCompatActivity {
     private void onReloadButtonClick(){
         Log.d(TAG, "Reload bluetooth devices list requested!");
         availableInfiLedDevicesList.clear();
-        availableInfiLedDevicesListStrings.clear();
+
+
+        deleteListOfDevices();
         discoverDevices(bluetoothAdapter);
+    }
+
+    private void deleteListOfDevices(){
+        textView1.setText(" ");
+        textView2.setText(" ");
+        textView3.setText(" ");
+
+        availableInfiLedDevicesStrings[0] = " ";
+        availableInfiLedDevicesStrings[1] = " ";
+        availableInfiLedDevicesStrings[2] = " ";
+
+    }
+
+    private void updateListOfDevices(){
+        textView1.setText(availableInfiLedDevicesStrings[0]);
     }
 
 

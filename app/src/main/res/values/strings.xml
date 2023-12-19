@@ -7,4 +7,5 @@
     <string name="custom_static_button">CUSTOM</string>
     <string name="custom_static_title">Set RGB values</string>
     <string name="reload_button_title">Reload</string>
+    <string name="space"> </string>
 </resources>
